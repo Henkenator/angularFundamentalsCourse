@@ -7,6 +7,7 @@ import {EventThumbnailComponent} from './events/event-thumbnail.component';
 import {NavbarComponent} from './nav/navbar.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {EventService} from "./events/shared/event.service";
+import {ToastrService} from "./common/toastr.service";
 
 @NgModule({
   declarations: [
@@ -19,7 +20,7 @@ import {EventService} from "./events/shared/event.service";
     BrowserModule,
     NgbModule.forRoot()
   ],
-  providers: [EventService],
+  providers: [EventService, ToastrService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
