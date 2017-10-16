@@ -5,8 +5,7 @@ import { AppComponent } from './app.component';
 import {EventsListComponent} from './events/events-list.component';
 import {EventThumbnailComponent} from './events/event-thumbnail.component';
 import {NavbarComponent} from './nav/navbar.component';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-import {EventService} from "./events/shared/event.service";
+import {EventService} from './events/shared/event.service';
 import { EventDetailsComponent } from './events/event-details/event-details.component';
 import {RouterModule} from '@angular/router';
 import {appRoutes} from './routes';
@@ -14,6 +13,7 @@ import { CreateEventComponent } from './events/create-event/create-event.compone
 import { Error404Component } from './errors/error404/error404.component';
 import {EventRouteActivator} from './events/event-details/event-route-activator.service';
 import {EventsListResolverService} from './events/shared/events-list-resolver.service';
+import {AuthService} from './user/auth.service';
 
 @NgModule({
   declarations: [
@@ -36,13 +36,14 @@ import {EventsListResolverService} from './events/shared/events-list-resolver.se
     {
       provide: 'canDeactivateCreateEvent',
       useValue: checkDirtyState
-    }
+    },
+    AuthService
   ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
 
-function checkDirtyState(component: CreateEventComponent) {
+export function checkDirtyState(component: CreateEventComponent) {
   if (component.isDirty) {
     return window.confirm('You have not saved. Wanna cancel anyway?');
   }

@@ -1,24 +1,25 @@
 import {Injectable} from '@angular/core';
-import {Subject} from 'rxjs/RX';
+import {Subject, Observable} from 'rxjs/RX';
+import {IEvent} from './event.model';
+
 /**
  * Created by Henke on 2017-09-22.
  */
 
 @Injectable()
 export class EventService {
-  getEvents() {
-    //return EVENTS;
-    const subject = new Subject();
-    setTimeout(() => {subject.next(EVENTS); subject.complete(); }, 1000);
+  getEvents(): Observable<IEvent[]> {
+    const subject = new Subject<IEvent[]>();
+    setTimeout(() => {subject.next(EVENTS); subject.complete(); }, 100);
     return subject;
   }
 
-  getEvent(id: number) {
+  getEvent(id: number): IEvent {
     return EVENTS.find(event => event.id === id);
   }
 }
 
-const EVENTS = [
+const EVENTS: IEvent[] = [
   {
     id: 1,
     name: 'Angular Connect',
