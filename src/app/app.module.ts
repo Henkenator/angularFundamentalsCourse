@@ -19,6 +19,13 @@ import { CreateSessionComponent } from './events/event-details/create-session/cr
 import { SessionListComponent } from './events/event-details/session-list/session-list.component';
 import {CollapsibleWellComponent} from './common/collapsible-well.component';
 import {DurationPipe} from './events/shared/duration.pipe';
+import {Toastr, TOASTR_TOKEN} from './common/toastr.service';
+import { JQ_TOKEN, SimpleModalComponent} from './common/index';
+import {UpvoteComponent} from './events/event-details/upvote.component';
+import {VoterService} from './events/event-details/voter.service';
+
+//declare let toastr: Toastr;
+declare let jQuery: Object;
 
 @NgModule({
   declarations: [
@@ -32,7 +39,9 @@ import {DurationPipe} from './events/shared/duration.pipe';
     CreateSessionComponent,
     SessionListComponent,
     CollapsibleWellComponent,
-    DurationPipe
+    DurationPipe,
+    SimpleModalComponent,
+    UpvoteComponent
   ],
   imports: [
     BrowserModule,
@@ -44,11 +53,19 @@ import {DurationPipe} from './events/shared/duration.pipe';
     EventService,
     EventRouteActivator,
     EventsListResolverService,
+  /*  {
+      provide: TOASTR_TOKEN,
+      useValue: toastr
+    },{
+      provide: JQ_TOKEN,
+      useValue: jQuery
+    },*/
     {
       provide: 'canDeactivateCreateEvent',
       useValue: checkDirtyState
     },
-    AuthService
+    AuthService,
+    VoterService
   ],
   bootstrap: [AppComponent]
 })
