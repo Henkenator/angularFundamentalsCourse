@@ -23,6 +23,7 @@ import {Toastr, TOASTR_TOKEN} from './common/toastr.service';
 import { JQ_TOKEN, SimpleModalComponent} from './common/index';
 import {UpvoteComponent} from './events/event-details/upvote.component';
 import {VoterService} from './events/event-details/voter.service';
+import {LocationValidator} from './events/location-validator.directive';
 
 //declare let toastr: Toastr;
 declare let jQuery: Object;
@@ -41,7 +42,8 @@ declare let jQuery: Object;
     CollapsibleWellComponent,
     DurationPipe,
     SimpleModalComponent,
-    UpvoteComponent
+    UpvoteComponent,
+    LocationValidator
   ],
   imports: [
     BrowserModule,
